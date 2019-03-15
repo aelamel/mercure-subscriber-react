@@ -1,3 +1,6 @@
+# mercure-subscriber-react
+A React application that consumes feed from a Mercure HUB
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
