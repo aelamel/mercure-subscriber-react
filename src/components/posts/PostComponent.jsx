@@ -33,12 +33,20 @@ function PostComponent(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Subscribe
-        </Button>
-        <Button size="small" color="primary">
-          Unsubscribe
-        </Button>
+        {
+          (!props.post.subscribedTo) ? (
+            <Button size="small" color="primary" onClick={() => props.onSubscribe(props.post)}>
+              Subscribe
+            </Button>
+          ): null
+        }
+        {
+          (props.post.subscribedTo) ? (
+            <Button size="small" color="primary" onClick={() => props.onUnSubscribe(props.post)}>
+              UnSubscribe
+            </Button>
+          ): null
+        }
       </CardActions>
     </Card>
     </React.Fragment>

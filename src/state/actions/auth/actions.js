@@ -12,3 +12,9 @@ export const signOut = () => {
         type: AuthActionTypes.SIGNOUT,
     }
 }
+
+export const connectToHub = () => {
+    return {
+        type: AuthActionTypes.CONNECT_TO_HUB,
+    }
+}

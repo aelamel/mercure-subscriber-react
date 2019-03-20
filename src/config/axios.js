@@ -6,13 +6,7 @@ const instance =  axios.create({
 });
 
 instance.interceptors.request.use(async function (config) {
-//   if (config.url.indexOf('private') !== -1) {
-//     const token = localStorage.getItem('token');
-//     config.headers = {
-//       ...config.headers,
-//       authorization: token
-//     }
-//   }
+  config.withCredentials = true;
   return config;
 }, function (error) {
   // Do something with request error
