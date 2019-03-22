@@ -54,34 +54,10 @@ class Layout extends React.Component {
     this.eventSource = null;
   }
   componentDidMount() {
-    // const url = new URL('http://localhost:3333/hub');
-    // url.searchParams.append('topic', 'http://local.dev/notifications');
-    
-    // this.eventSource = new EventSource(url, {withCredentials: true});
-    
-    // // The callback will be called every time an update is published
-    // this.eventSource.onmessage = (e) => {
-    //     console.log(e);
-    //     this.setState({
-    //         msg: JSON.parse(e.data).message
-    //     });
-
-    //     setTimeout(() => {
-    //         this.setState({
-    //             msg: ''
-    //         });
-    //     }, 2000);
-    // }
     this.props.connectToHub();
   }
 
-  componentWillUpdate() {
-    console.log('test');
-  }
-
-  componentWillUnmount() {
-    // this.eventSource.close();
-  }
+  
 
   render() {
     const { classes, authenticated, checked } = this.props;
