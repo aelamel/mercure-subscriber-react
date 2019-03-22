@@ -26,15 +26,17 @@ export function *listenToEventsSaga() {
             eventSource.close();
         };
     });
-    const { e } = yield take(channel);
-    if (e) {
-        const mySuccessNotification = {
-            message: JSON.parse(e.data).message,
-            type: NOTIFICATION_TYPE_INFO,
-            duration: 2000,
-            canDismiss: true
-            }
-        yield put(createNotification(mySuccessNotification));
+    while(true) {
+        const { e } = yield take(channel);
+        if (e) {
+            const mySuccessNotification = {
+                message: JSON.parse(e.data).message,
+                type: NOTIFICATION_TYPE_INFO,
+                duration: 2000,
+                canDismiss: true
+                }
+            yield put(createNotification(mySuccessNotification));
+        }
     }
         
 }
