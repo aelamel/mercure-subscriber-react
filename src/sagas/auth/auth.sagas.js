@@ -4,9 +4,7 @@ import { sessionService } from 'redux-react-session';
 
 import axios from '../../config/axios';
 import * as UserActions from '../../state/actions/user/actions';
-import * as NotificationActions from '../../state/actions/notification/actions';
 
-let eventSource = null;
 
 export function *signInSaga(action) {
 
@@ -28,24 +26,3 @@ export function *signOutSaga() {
     yield put(push('/signin'));
 }
 
-export function *listenToEventsSaga() {
-
-    const url = yield new URL('http://localhost:3333/hub');
-    url.searchParams.append('topic', 'http://local.dev/notifications');
-    
-    if (eventSource !== null) {
-        eventSource.close();
-    }
-    eventSource = yield new EventSource(url, {withCredentials: true});
-    
-    // The callback will be called every time an update is published
-    eventSource.onmessage = (e) => {
-        console.log(e);
-        
-        put(NotificationActions.showNotification(JSON.parse(e.data).message));
-
-        setTimeout(() => {
-            
-        }, 2000);
-    }
-}

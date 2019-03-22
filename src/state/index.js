@@ -7,7 +7,7 @@ import rootSaga from '../sagas';
 import { sessionService } from 'redux-react-session';
 import { sessionReducer } from 'redux-react-session';
 import userReducer from './reducers/user.reducer';
-import notificationReducer from './reducers/notification.reducer';
+import notifyReducer from 'react-redux-notify';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
@@ -15,10 +15,9 @@ const history = createBrowserHistory();
 
 const reducers = combineReducers({
     userState: userReducer,
-    notificaton: notificationReducer,
     router: connectRouter(history),
-    session: sessionReducer
-
+    session: sessionReducer,
+    notifications: notifyReducer
 });
 
 

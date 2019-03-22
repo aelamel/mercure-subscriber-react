@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import 'react-redux-notify/dist/ReactReduxNotify.css';
 
 import PropTypes from 'prop-types';
 import {Switch, Route} from 'react-router-dom';
@@ -15,7 +16,7 @@ import PostsComponent from '../posts/PostsComponent';
 import SignInComponent from '../auth/SignInComponent';
 
 import * as AuthActions from '../../state/actions/auth/actions';
-import * as UserActions from '../../state/actions/user/actions';
+import { Notify } from 'react-redux-notify';
 
 const styles = theme => ({
   '@global': {
@@ -102,6 +103,7 @@ class Layout extends React.Component {
           }
         </main>
       <Footer  classes={classes} />
+      <Notify />
       </React.Fragment>
     );
   }

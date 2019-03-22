@@ -16,7 +16,6 @@ class PostsComponent extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props.user);
         this.props.loadUserPosts();
         const response = await axios.get('posts');
         this.setState({
@@ -25,20 +24,10 @@ class PostsComponent extends Component {
     }
 
     subscribeHandler = async (post) => {
-        //TODO: Transform to SAGA and update user posts there
-        console.log('subscribe', post);
-        // await axios.put('posts/'+ post.id +'/subscribe', {
-        //     user: this.props.user.id
-        // });
         this.props.subscribe(post);
     }
   
     unsubscribeHandler = async (post) => {
-        //TODO: Transform to SAGA and update user posts there
-        console.log('unsubscribe', post);
-        // await axios.put('posts/'+ post.id +'/unsubscribe', {
-        //     user: this.props.user.id
-        // });
         this.props.unsubscribe(post);
     }
 
